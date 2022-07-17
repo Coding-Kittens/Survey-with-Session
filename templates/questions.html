@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+
+{%block title%}Surveys Page{%endblock%}
+
+
+    {%block content%}
+
+{%if get_flashed_messages()%}
+{%for msg in get_flashed_messages()%}
+<p>{{msg}}</p>
+{%endfor%}
+{%endif%}
+<form class="question_form" action="/answer/{{id}}" method="POST">
+
+<h2>{{question.question}}</h2>
+{%for choice in question.choices%}
+<label>{{choice}}<input type="radio" required  name="question_choice" value="{{choice}}"></label>
+{%endfor%}
+<button type="submit" >Submit Answer</button>
+</form>
+
+    {%endblock%}
